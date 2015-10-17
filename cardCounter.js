@@ -43,7 +43,7 @@ setInterval(function(){
 			lp = np; 
 			if(r.messages[0] && r.messages[0].m == ":]") {getCards(0);};
 			if(r.messages[0] && r.messages[0].m == ":[") {getCardsBySuit(0);};
-			if(r.messages[0] && r.messages[0].m == "[:" && !alerted) {alert(Object.keys(cardsBySuit).filter(function(c){return !cards[c];})); alerted = true;};
+			if(r.messages[0] && r.messages[0].m == "[:" && !alerted) {alert(Object.keys(cards).filter(function(c){return !cards[c];})); alerted = true;};
 			if(r.messages[0] && r.messages[0].m == "]:" && !alerted) {alert(Object.keys(cardsBySuit).filter(function(c){return !cardsBySuit[c];})); alerted = true;};
 			if(r.messages[0] && r.messages[0].m == " ") {alerted = false;};
 		})
