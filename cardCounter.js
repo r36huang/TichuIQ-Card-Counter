@@ -7,9 +7,7 @@
 // @match        http://tichuiq.com/public_html/game.php
 // @grant        none
 // ==/UserScript==
-// Copy paste this into your browser's console and it'll automatically track which cards have been played.
-// Use getCards(0) to see which cards have not been played and getCards() to see which cards have been played
-// If you want the cards sorted by suit, use getCardsBySuit(0) for unplayed and getCardsBySuit() for played
+// This script automatically tracks which cards have been played.
 // "00" is dog, "01" is mahjong, "15" is phoenix, "17" is dragon
 // a is black, b is blue, c is green, d is red
 // To make this automatically load, install this script into Tampermonkey for Google Chrome
@@ -31,9 +29,16 @@ function resetCardsBySuit(cardsBySuit) {
 }
 resetCardsBySuit(cardsBySuit);
 var alerted = false;
+var cardsInHand = {};
 setInterval(function(){
 	$.get('http://tichuiq.com/public_html/get_game_data.php?start=0&firstcall=0').then(function(r){
 			var r = JSON.parse(r); 
+			for(i = 0; i < 4; i++) {
+				if(typeof(r.players[i].cards[0]) == "string") {
+					var s = r.players[i].cards;
+					s.forEach(function(c){cardsInHand[c] = true;});
+				}
+			};
 			var h = r.active_hand.played_pile; 
 			if (!r.given_cards) {resetCards(cards); resetCardsBySuit(cardsBySuit); console.clear();}
 			if(r.dogs_were_played) {cards["00"] = true; cardsBySuit["00"] = true;}
@@ -43,15 +48,15 @@ setInterval(function(){
 			lp = np; 
 			if(r.messages[0] && r.messages[0].m == ":]") {getCards(0);};
 			if(r.messages[0] && r.messages[0].m == ":[") {getCardsBySuit(0);};
-			if(r.messages[0] && r.messages[0].m == "[:" && !alerted) {alert(Object.keys(cards).filter(function(c){return !cards[c];})); alerted = true;};
-			if(r.messages[0] && r.messages[0].m == "]:" && !alerted) {alert(Object.keys(cardsBySuit).filter(function(c){return !cardsBySuit[c];})); alerted = true;};
+			if(r.messages[0] && r.messages[0].m == "[:" && !alerted) {alert(Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);})); alerted = true;};
+			if(r.messages[0] && r.messages[0].m == "]:" && !alerted) {alert(Object.keys(cardsBySuit).filter(function(c){return (!cardsBySuit[c] && !cardsInHand[c]);})); alerted = true;};
 			if(r.messages[0] && r.messages[0].m == " ") {alerted = false;};
 		})
 }, 500)
 function getCards(i) {
 	switch(i) {
 		case 0:
-			console.log(Object.keys(cards).filter(function(c){return !cards[c];}));
+			console.log(Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);}));
 			break;
 		default:
 			console.log(Object.keys(cards).filter(function(c){return cards[c];}));
@@ -60,7 +65,7 @@ function getCards(i) {
 function getCardsBySuit(i) {
 	switch(i) {
 		case 0:
-			console.log(Object.keys(cardsBySuit).filter(function(c){return !cardsBySuit[c];}));
+			console.log(Object.keys(cardsBySuit).filter(function(c){return (!cardsBySuit[c] && !cardsInHand[c]);}));
 			break;
 		default:
 			console.log(Object.keys(cardsBySuit).filter(function(c){return cardsBySuit[c];}));
