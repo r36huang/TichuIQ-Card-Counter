@@ -40,7 +40,7 @@ setInterval(function(){
 				}
 			};
 			var h = r.active_hand.played_pile; 
-			if (!r.given_cards) {resetCards(cards); resetCardsBySuit(cardsBySuit); console.clear();}
+			if (!r.given_cards) {resetCards(cards); resetCardsBySuit(cardsBySuit); resetCards(cardsInHand); console.clear();}
 			if(r.dogs_were_played) {cards["00"] = true; cardsBySuit["00"] = true;}
 			h.forEach(function(c) {cards[c] = true; cardsBySuit[c] = true;}); 
 			var np = Object.keys(cards).filter(function(c){return cards[c];}); 
