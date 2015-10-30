@@ -78,7 +78,7 @@ function getCardsBySuit(i) {
 
 function createWindow(){
 	
-	var cardWindow = window.open("Cards", "MsgWindow", "width=200, height=1000");
+	var cardWindow = window.open("", "Cards", "width=200, height=1000");
 	return cardWindow;
 	
 }
