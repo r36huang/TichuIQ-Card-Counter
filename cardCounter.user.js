@@ -79,8 +79,10 @@ function getCardsBySuit(i) {
 function createWindow(){
 	
 	var cardWindow = window.open("", "Cards", "width=200, height=1000");
-	cardWindow.document.createElement("P");
-	cardWindow.document.createTextNode("Fuck you!");
+	var t1 = cardWindow.document.createElement("P");
+	var t2 = cardWindow.document.createTextNode("Fuck you!");
+	t1.appendChild(t2);
+	cardWindow.document.appendChild(t1);
 	//;document.getElementsByTagName("BODY")[0]
 	return cardWindow;
 	
