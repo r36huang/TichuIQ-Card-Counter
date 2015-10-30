@@ -30,6 +30,7 @@ function resetCardsBySuit(cardsBySuit) {
 resetCardsBySuit(cardsBySuit);
 var alerted = false;
 var cardsInHand = {};
+cards = Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);});
 var cardWindow = createWindow();
 setInterval(function(){
 	$.get('http://tichuiq.com/public_html/get_game_data.php?start=0&firstcall=0').then(function(r){
@@ -52,7 +53,7 @@ setInterval(function(){
 			if(r.messages[0] && r.messages[0].m == "[:" && !alerted) {alert(Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);})); alerted = true;};
 			if(r.messages[0] && r.messages[0].m == "]:" && !alerted) {alert(Object.keys(cardsBySuit).filter(function(c){return (!cardsBySuit[c] && !cardsInHand[c]);})); alerted = true;};
 			if(r.messages[0] && r.messages[0].m == " ") {alerted = false;};
-			
+			cards = Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);});
 			updateWindow(cardWindow, cards);
 		
 		})
@@ -89,6 +90,8 @@ function createWindow(){
 	var bodyElement;
 	var bodyText;
 	var br = cardDocument.createElement("BR");
+	
+	
 	
 	
 	for(i = 0; i<56; i++){
