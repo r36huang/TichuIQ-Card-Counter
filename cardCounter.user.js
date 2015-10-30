@@ -53,7 +53,7 @@ setInterval(function(){
 			if(r.messages[0] && r.messages[0].m == "]:" && !alerted) {alert(Object.keys(cardsBySuit).filter(function(c){return (!cardsBySuit[c] && !cardsInHand[c]);})); alerted = true;};
 			if(r.messages[0] && r.messages[0].m == " ") {alerted = false;};
 			
-			updateWindow(cardWindow);
+			updateWindow(cardWindowl, cards);
 		
 		})
 }, 500)
