@@ -82,7 +82,7 @@ function createWindow(){
 	var t1 = cardWindow.document.createElement("P");
 	var t2 = cardWindow.document.createTextNode("Fuck you!");
 	t1.appendChild(t2);
-	cardWindow.document.appendChild(t1);
+	cardWindow.document.body.appendChild(t1);
 	//;document.getElementsByTagName("BODY")[0]
 	return cardWindow;
 	
