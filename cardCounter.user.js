@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TichuIQ Card Counter with Alert
 // @namespace    http://your.homepage/
-// @version      0.1b01
+// @version      0.1b1
 // @description  enter something useful
 // @author       You
 // @match        http://tichuiq.com/public_html/game.php
