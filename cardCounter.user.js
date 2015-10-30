@@ -75,8 +75,8 @@ function getCardsBySuit(i) {
 
 function createWindow(){
 	
-	var window = window.open("", "MsgWindow", "width=200, height=100");
-	window.document.write("<p>This is 'MsgWindow'. I am 200px wide and 100px tall!</p>");
+	var cardWindow = window.open("", "MsgWindow", "width=200, height=100");
+	cardWindow.document.write("<p>This is 'MsgWindow'. I am 200px wide and 100px tall!</p>");
 	
 }
 
