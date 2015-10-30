@@ -97,7 +97,6 @@ while (myNode.firstChild) {
     myNode.removeChild(myNode.firstChild);
 }
 
-var cardDocument = cardWindow.document;
 	var bodyElement;
 	var bodyText;
 	var br = cardDocument.createElement("BR");
@@ -105,7 +104,7 @@ var cardDocument = cardWindow.document;
 	
 	
 	
-	for(i = 0; i<56; i++){
+	for(i in cards){
 		
 		bodyElement = cardDocument.createElement("P");
 		bodyText = cardDocument.createTextNode(cards[i]);
