@@ -102,12 +102,12 @@ while (myNode.firstChild) {
 	var br = cardDocument.createElement("BR");
 	
 	
-	cards = Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);});
+	cards2 = Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);});
 	
-	for(i in cards){
+	for(i in cards2){
 		
 		bodyElement = cardDocument.createElement("P");
-		bodyText = cardDocument.createTextNode(cards[i]);
+		bodyText = cardDocument.createTextNode(cards2[i]);
 		bodyElement.appendChild(bodyText);
 		cardDocument.body.appendChild(bodyElement);
 		cardDocument.body.appendChild(br);
