@@ -81,7 +81,7 @@ function createWindow(){
 	
 	var cardWindow = window.open("", "Cards", "width=200, height=700");
 	
-	
+	updateWindow(cardWindow,cards);
 	
 	
 	return cardWindow;
