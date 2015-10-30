@@ -113,7 +113,7 @@ function updateWindow(cardWindow, cards){
 
 	var cardDocument = cardWindow.document;
 
-	for(i = 0; i<56; i++){
+	for(i in cards){
 		
 		cardDocument.body.getElementsByTagName("P")[i].innerHTML = cards[i];
 		
