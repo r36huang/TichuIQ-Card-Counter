@@ -105,7 +105,7 @@ while (myNode.firstChild) {
 
 		if(!cards[i]) continue;
 		bodyElement = cardDocument.createElement("P");
-		bodyText = cardDocument.createTextNode(cards2[i]);
+		bodyText = cardDocument.createTextNode(i);
 		bodyElement.appendChild(bodyText);
 		cardDocument.body.appendChild(bodyElement);
 		cardDocument.body.appendChild(br);
