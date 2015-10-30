@@ -90,7 +90,7 @@ function createWindow(){
 
 function updateWindow(cardWindow, cards){
 
-	cardWindow.document.write(Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);}));
+	//cardWindow.document.write(Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);}));
 
 
 }
