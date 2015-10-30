@@ -103,7 +103,7 @@ while (myNode.firstChild) {
 
 	for(i in allCards){
 
-		if(!cards[i]) continue;
+		if(!cards[allCards[i]]) continue;
 		bodyElement = cardDocument.createElement("P");
 		bodyText = cardDocument.createTextNode(allCards[i]);
 		bodyElement.appendChild(bodyText);
