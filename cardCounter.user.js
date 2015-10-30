@@ -101,11 +101,11 @@ while (myNode.firstChild) {
 	var bodyText;
 	var br = cardDocument.createElement("BR");
 	
-	
+	alert("R");
 	var cards2 = Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);});
-	
+	alert("S");
 	for(i in cards2){
-		
+		alert("T");
 		bodyElement = cardDocument.createElement("P");
 		bodyText = cardDocument.createTextNode(cards2[i]);
 		bodyElement.appendChild(bodyText);
