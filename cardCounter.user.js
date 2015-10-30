@@ -84,17 +84,7 @@ function createWindow(){
 	t1.appendChild(t2);
 	cardWindow.document.body.appendChild(t1);
 	//;document.getElementsByTagName("BODY")[0]
-	return cardWindow;
 	
-}
-
-function updateWindow(cardWindow, cards){
-
-	var cardDocument = cardWindow.document;
-	var bodyElement;
-	var bodyText;
-	var br = cardDocument.createElement("BR");
-
 	for(i = 0; i<56; i++){
 		
 		bodyElement = cardDocument.createElement("P");
@@ -102,6 +92,21 @@ function updateWindow(cardWindow, cards){
 		bodyElement.appendChild(bodyText);
 		cardDocument.body.appendChild(bodyElement);
 		cardDocument.body.appendChild(br);
+		
+	}
+	
+	
+	return cardWindow;
+	
+}
+
+function updateWindow(cardWindow, cards){
+
+	var cardDocument = cardWindow.document;
+
+	for(i = 0; i<56; i++){
+		
+		cardDocument.body.getElementsByTagName("P")[i].innerHTML = cards[i];
 		
 	}
 
