@@ -30,6 +30,7 @@ function resetCardsBySuit(cardsBySuit) {
 resetCardsBySuit(cardsBySuit);
 var alerted = false;
 var cardsInHand = {};
+createWindow();
 setInterval(function(){
 	$.get('http://tichuiq.com/public_html/get_game_data.php?start=0&firstcall=0').then(function(r){
 			var r = JSON.parse(r); 
@@ -70,4 +71,17 @@ function getCardsBySuit(i) {
 		default:
 			console.log(Object.keys(cardsBySuit).filter(function(c){return cardsBySuit[c];}));
 	}
+}
+
+function createWindow(){
+	
+	var window = window.open("", "MsgWindow", "width=200, height=100");
+	window.document.write("<p>This is 'MsgWindow'. I am 200px wide and 100px tall!</p>");
+	
+}
+
+function updateWindow(){
+
+		
+
 }
