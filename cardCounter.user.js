@@ -102,7 +102,7 @@ while (myNode.firstChild) {
 	var br = cardDocument.createElement("BR");
 	
 	
-	cards2 = Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);});
+	var cards2 = Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);});
 	
 	for(i in cards2){
 		
