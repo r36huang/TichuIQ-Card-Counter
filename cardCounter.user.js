@@ -80,7 +80,7 @@ function createWindow(){
 	
 	var cardWindow = window.open("", "Cards", "width=200, height=1000");
 	cardWindow.document.createElement("P");
-	cardWindow.document.textNode("Fuck you!");
+	cardWindow.document.createTextNode("Fuck you!");
 	//;document.getElementsByTagName("BODY")[0]
 	return cardWindow;
 	
