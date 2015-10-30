@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TichuIQ Card Counter with Alert
 // @namespace    http://your.homepage/
-// @version      0.1
+// @version      0.2b
 // @description  enter something useful
 // @author       You
 // @match        http://tichuiq.com/public_html/game.php
@@ -30,6 +30,8 @@ function resetCardsBySuit(cardsBySuit) {
 resetCardsBySuit(cardsBySuit);
 var alerted = false;
 var cardsInHand = {};
+cards = Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);});
+var cardWindow = createWindow();
 setInterval(function(){
 	$.get('http://tichuiq.com/public_html/get_game_data.php?start=0&firstcall=0').then(function(r){
 			var r = JSON.parse(r); 
@@ -51,6 +53,9 @@ setInterval(function(){
 			if(r.messages[0] && r.messages[0].m == "[:" && !alerted) {alert(Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);})); alerted = true;};
 			if(r.messages[0] && r.messages[0].m == "]:" && !alerted) {alert(Object.keys(cardsBySuit).filter(function(c){return (!cardsBySuit[c] && !cardsInHand[c]);})); alerted = true;};
 			if(r.messages[0] && r.messages[0].m == " ") {alerted = false;};
+
+			updateWindow(cardWindow, cards);
+		
 		})
 }, 500)
 function getCards(i) {
@@ -70,4 +75,43 @@ function getCardsBySuit(i) {
 		default:
 			console.log(Object.keys(cardsBySuit).filter(function(c){return cardsBySuit[c];}));
 	}
+}
+
+function createWindow(){
+	
+	var cardWindow = window.open("", "Cards", "width=200, height=700");
+	
+	updateWindow(cardWindow,cards);
+	
+	
+	return cardWindow;
+	
+}
+
+function updateWindow(cardWindow, cards){
+
+	var cardDocument = cardWindow.document;
+
+var myNode = cardDocument.body;
+while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
+}
+
+	var bodyElement;
+	var bodyText;
+	var br = cardDocument.createElement("BR");
+
+	for(i in allCards){
+
+		if(cards[allCards[i]]) continue;
+		bodyElement = cardDocument.createElement("P");
+		bodyText = cardDocument.createTextNode(allCards[i]);
+		bodyElement.appendChild(bodyText);
+		cardDocument.body.appendChild(bodyElement);
+		cardDocument.body.appendChild(br);
+		
+	}
+
+
+
 }
