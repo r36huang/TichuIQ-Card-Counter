@@ -104,7 +104,7 @@ while (myNode.firstChild) {
 
 	var cards2 = Object.keys(cards).filter(function(c2){return (!cards[c]);});
 
-	for(i in cards2){
+	for(i in allCards){
 
 		bodyElement = cardDocument.createElement("P");
 		bodyText = cardDocument.createTextNode(cards2[i]);
