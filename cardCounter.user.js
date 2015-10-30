@@ -90,6 +90,22 @@ function createWindow(){
 
 function updateWindow(cardWindow, cards){
 
+	var cardDocument = cardWindow.document;
+	var bodyElement;
+	var bodyText;
+	var br = cardDocument.createElement("BR");
+
+	for(i = 0; i<56; i++){
+		
+		bodyElement = cardDocument.createElement("P");
+		bodyText = cardDocument.createTextNode(cards[i]);
+		bodyElement.appendChild(bodyText);
+		cardDocument.body.appendChild(bodyElement);
+		cardDocument.body.appendChild(br);
+		
+	}
+
+
 	//cardWindow.document.write(Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);}));
 
 
