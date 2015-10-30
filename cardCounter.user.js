@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TichuIQ Card Counter with Alert
 // @namespace    http://your.homepage/
-// @version      0.1
+// @version      0.1b0
 // @description  enter something useful
 // @author       You
 // @match        http://tichuiq.com/public_html/game.php
@@ -79,6 +79,9 @@ function getCardsBySuit(i) {
 function createWindow(){
 	
 	var cardWindow = window.open("", "Cards", "width=200, height=1000");
+	cardWindow.window.document.createElement("P");
+	cardWindow.window.document.textNode("Fuck you!");
+	//;document.getElementsByTagName("BODY")[0]
 	return cardWindow;
 	
 }
@@ -86,5 +89,6 @@ function createWindow(){
 function updateWindow(cardWindow, cards){
 
 	cardWindow.document.write(Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);}));
+
 
 }
