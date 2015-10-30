@@ -30,7 +30,7 @@ function resetCardsBySuit(cardsBySuit) {
 resetCardsBySuit(cardsBySuit);
 var alerted = false;
 var cardsInHand = {};
-createWindow();
+var cardWindow = createWindow();
 setInterval(function(){
 	$.get('http://tichuiq.com/public_html/get_game_data.php?start=0&firstcall=0').then(function(r){
 			var r = JSON.parse(r); 
@@ -52,6 +52,9 @@ setInterval(function(){
 			if(r.messages[0] && r.messages[0].m == "[:" && !alerted) {alert(Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);})); alerted = true;};
 			if(r.messages[0] && r.messages[0].m == "]:" && !alerted) {alert(Object.keys(cardsBySuit).filter(function(c){return (!cardsBySuit[c] && !cardsInHand[c]);})); alerted = true;};
 			if(r.messages[0] && r.messages[0].m == " ") {alerted = false;};
+			
+			updateWindow(cardWindow);
+		
 		})
 }, 500)
 function getCards(i) {
@@ -75,13 +78,13 @@ function getCardsBySuit(i) {
 
 function createWindow(){
 	
-	var cardWindow = window.open("Cards", "MsgWindow", "width=200, height=100");
-	cardWindow.document.write("<p>This is 'MsgWindow'. I am 200px wide and 100px tall!</p>");
+	var cardWindow = window.open("Cards", "MsgWindow", "width=200, height=1000");
+	return cardWindow;
 	
 }
 
-function updateWindow(){
+function updateWindow(cardWindow, cards){
 
-		
+	cardWindow.document.write(Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);}));
 
 }
