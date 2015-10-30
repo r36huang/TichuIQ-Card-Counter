@@ -79,14 +79,25 @@ function getCardsBySuit(i) {
 
 function createWindow(){
 	
-	var cardWindow = window.open("", "Cards", "width=200, height=1000");
-	var t1 = cardWindow.document.createElement("P");
-	var t2 = cardWindow.document.createTextNode("Fuck you!");
-	t1.appendChild(t2);
-	cardWindow.document.body.appendChild(t1);
-	//;document.getElementsByTagName("BODY")[0]
+	var cardWindow = window.open("", "Cards", "width=200, height=700");
 	
+	
+	
+	
+	return cardWindow;
+	
+}
+
+function updateWindow(cardWindow, cards){
+
 	var cardDocument = cardWindow.document;
+
+var myNode = cardDocument.body;
+while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
+}
+
+var cardDocument = cardWindow.document;
 	var bodyElement;
 	var bodyText;
 	var br = cardDocument.createElement("BR");
@@ -103,24 +114,7 @@ function createWindow(){
 		cardDocument.body.appendChild(br);
 		
 	}
-	
-	
-	return cardWindow;
-	
-}
 
-function updateWindow(cardWindow, cards){
-
-	var cardDocument = cardWindow.document;
-
-	for(i in cards){
-		
-		cardDocument.body.getElementsByTagName("P")[i].innerHTML = cards[i];
-		
-	}
-
-
-	//cardWindow.document.write(Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);}));
 
 
 }
