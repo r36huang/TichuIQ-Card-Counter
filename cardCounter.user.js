@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TichuIQ Card Counter with Visual Display
 // @namespace    http://your.homepage/
-// @version      0.3b
+// @version      0.3c
 // @description  enter something useful
 // @author       You
 // @match        http://tichuiq.com/public_html/game.php
@@ -133,7 +133,7 @@ function createWindow(){
 function updateWindow(cardWindow, cards){
 	var cardDocument = cardWindow.document;
 	
-	var cardsArray = Object.keys(cards).filter(function(c){return (cards[c] && cardsInHand[c]);});
+	var cardsArray = Object.keys(cards).filter(function(c){return (cards[c] || cardsInHand[c]);});
 
 	for(i in cardsArray) {
 		var rand = Math.random();
