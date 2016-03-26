@@ -133,7 +133,7 @@ function createWindow(){
 function updateWindow(cardWindow, cards){
 	var cardDocument = cardWindow.document;
 	
-	var cardsArray = Object.keys(cards).filter(function(c){return (!cards[c] && !cardsInHand[c]);});
+	var cardsArray = Object.keys(cards).filter(function(c){return (cards[c] && cardsInHand[c]);});
 
 	for(i in cardsArray) {
 		var rand = Math.random();
