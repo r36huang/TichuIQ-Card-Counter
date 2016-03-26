@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TichuIQ Card Counter with Visual Display
 // @namespace    http://your.homepage/
-// @version      0.3d
+// @version      0.3e
 // @description  enter something useful
 // @author       You
 // @match        http://tichuiq.com/public_html/game.php
@@ -62,7 +62,7 @@ setInterval(function(){
 				}
 			};
 			var h = r.active_hand.played_pile; 
-			if (!r.given_cards) {resetCards(cards); resetCardsBySuit(cardsBySuit); resetCards(cardsInHand); console.clear(); cardWindow.close(); var cardWindow = createWindow();}
+			if (!r.given_cards) {resetCards(cards); resetCardsBySuit(cardsBySuit); resetCards(cardsInHand); cardWindow.close(); var cardWindow = createWindow(); console.clear();}
 			if(r.dogs_were_played) {cards["00"] = true; cardsBySuit["00"] = true;}
 			h.forEach(function(c) {cards[c] = true; cardsBySuit[c] = true;}); 
 			var np = Object.keys(cards).filter(function(c){return cards[c];}); 
@@ -125,8 +125,6 @@ function createWindow(){
 				break;
 		}
 	}
-	
-	updateWindow(cardWindow,cards);
 	
 	return cardWindow;
 }
