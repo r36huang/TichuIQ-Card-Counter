@@ -145,4 +145,26 @@ function updateWindow(cardWindow, cards){
 	}
 }
 
-// Intrinsic Ranking: 17, 15, 14d, 14c, 14b, 14a, ..., 2a, 01, 00
+// Intrinsic Ranking: 17, 15, 14d, 14c, 14b, 14a, ..., 02a, 01, 00
+// Hands are sorted according to this ranking (high -> low) and assigned an index (0-13 to start, reduced as cards are played from hand)
+
+// TichuIQ GET Request Behaviour
+// During call phase, use $.get('http://tichuiq.com/public_html/call_grand.php?call=0') or call=1 if you want to call
+// To pass cards during pass phase, use $.get('http://tichuiq.com/public_html/give_cards.php?&cards[]=x1&cards[]=x2&cards[]=x3) to left, across, right
+//   where x1, x2, x3 are the indices of the cards you are trying to pass
+// During play phase, use $.get('http://tichuiq.com/public_html/play.php?cards[]=x1') or &cards[]=x2 etc to play one or more cards
+// Use $.get('http://tichuiq.com/public_html/pass.php') to pass
+// Use $.get('http://tichuiq.com/public_html/call_tichu.php') to call tichu
+
+// Phases of the game:
+// 0-Waiting for Players to Join; 1-Waiting for Cards to be Dealt; 2-Grand Call Phase; 3-Passing; 4-Play;
+
+// Joining a Game:
+// Use 
+//$.get('http://tichuiq.com/public_html/get_games.php?start=0').then(function(r){
+//	var r = JSON.parse(r);
+//	if(r.games[i].players[i].can_join == "1") {
+//		// join the game somehow
+//	}
+//})
+//   open seats will have a value of 1 in the spot of JSON.parse
