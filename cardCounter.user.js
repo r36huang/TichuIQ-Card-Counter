@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TichuIQ Card Counter with Visual Display
 // @namespace    http://your.homepage/
-// @version      0.3c
+// @version      0.3
 // @description  enter something useful
 // @author       You
 // @match        http://tichuiq.com/public_html/game.php
@@ -62,7 +62,7 @@ setInterval(function(){
 				}
 			};
 			var h = r.active_hand.played_pile; 
-			if (!r.given_cards) {resetCards(cards); resetCardsBySuit(cardsBySuit); resetCards(cardsInHand); console.clear();}
+			if (!r.given_cards) {resetCards(cards); resetCardsBySuit(cardsBySuit); resetCards(cardsInHand); console.clear(); cardWindow.close(); var cardWindow = createWindow();}
 			if(r.dogs_were_played) {cards["00"] = true; cardsBySuit["00"] = true;}
 			h.forEach(function(c) {cards[c] = true; cardsBySuit[c] = true;}); 
 			var np = Object.keys(cards).filter(function(c){return cards[c];}); 
@@ -80,7 +80,7 @@ setInterval(function(){
 }, 500)
 
 function createWindow(){
-	var cardWindow = window.open("", "Cards", "width=200, height=700");
+	var cardWindow = window.open("", "Cards", "fullscreen=1");
 	var cardDocument = cardWindow.document;
 	cardDocument.title = "Cards";
 	cardDocument.body.bgColor = "000000";
@@ -106,6 +106,7 @@ function createWindow(){
 		var bodyImg = cardDocument.createElement("img");
 		bodyImg.id = allCards[i]+" img";
 		bodyImg.setAttribute("src", urlBase+allCards[i]+".png");
+		bodyImg.setAttribute("width", 80);
 		bodyElement.appendChild(bodyImg);
 		var bodySeparationSpace = cardDocument.createTextNode(" ");
 		bodyElement.appendChild(bodySeparationSpace);
