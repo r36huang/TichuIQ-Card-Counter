@@ -53,7 +53,7 @@ function getCardsBySuit(i) { // logs in the console the cards left (sorted by su
 
 // Main Loop
 setInterval(function(){
-	$.get('http://tichuiq.com/public_html/get_game_data.php?start=0&firstcall=0').then(function(r){
+	$.get('http://tichuiq.com/public_html/get_game_data.php').then(function(r){
 			var r = JSON.parse(r); 
 			for(i = 0; i < 4; i++) {
 				if(typeof(r.players[i].cards[0]) == "string") { // you only get to see your own hand, every other hand is just a "number"
